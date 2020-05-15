@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const Joi = require("joi");
 const contacts = require("./contacts.js");
+const morgan = require("morgan");
 
 const app = express();
 const PORT = 3000;
@@ -9,7 +10,7 @@ const PORT = 3000;
 app.use(cors());
 app.use(express.json());
 app.use(express.static("public"));
-// app.use(express.urlencoded());
+app.use(morgan("dev"));
 
 app.get("/", function (req, resp) {
   resp.send("Hello World");
